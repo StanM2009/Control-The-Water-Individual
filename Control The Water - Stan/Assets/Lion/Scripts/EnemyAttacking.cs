@@ -11,10 +11,15 @@ public class EnemyAttacking : MonoBehaviour
     public float defaultAttackCooldown = 5f;
     public float defaultRandomAttackCooldown = 0.25f;
     public float defaultAttackRange = 4f;
+    public float defaultObserveRangeMin = 20;
+    public float defaultObserveRangeMax = 30;
+    public float defaultNextAttackChance = 50;
     
     float distance;
     float attackCooldown;
     bool attackColliderActive = false;
+    string fightState = "close in";
+    Vector3 targetPosition;
 
     Animator animator;
     EnemyStateController EnemyStateController;
@@ -68,38 +73,108 @@ public class EnemyAttacking : MonoBehaviour
 
     public void Fighting()
     {
-        agent.speed = speed;
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1")) // attack animation is playing
+        if (fightState == "close in")
         {
-            agent.isStopped = true;
-            if (!attackColliderActive)
+            animator.SetInteger("movingState", 1);
+            if (distance < defaultObserveRangeMax)
             {
-                transform.rotation = RotateTowardsPlayer();
+                fightState = "observe";
+            }
+            else
+            {
+                agent.SetDestination(PositionAtDistanceFromPlayer(defaultObserveRangeMax));
             }
         }
-        else if (distance > defaultAttackRange) // move to player
+        else if (fightState == "observe")
         {
-            agent.isStopped = false;
-            agent.SetDestination(EnemyStateController.lastSeenPlayerPosition);
+            RotateTowardsPlayer();
+            animator.SetInteger("movingState", 0);
+            if (distance < defaultObserveRangeMin)
+            {
+                fightState = "attack";
+            }
+            else if (distance > defaultObserveRangeMax)
+            {
+                fightState = "close in";
+                EnemyStateController.LoseInterest();
+            }
         }
-        else if (attackCooldown > 0) // attack is on cooldown
+        else if (fightState == "attack")
         {
+            animator.SetInteger("movingState", 1);
+            if (distance > defaultAttackRange)
+            {
+                agent.SetDestination(player.transform.position); 
+            }
+            else if (attackCooldown <= 0)
+            {
+                animator.SetTrigger("attack1");
+                attackCooldown = defaultAttackCooldown * Random.Range(1 - defaultRandomAttackCooldown, 1 + defaultRandomAttackCooldown);
+                agent.ResetPath();
+                if (defaultNextAttackChance < Random.Range(0, 100))
+                {
+                    fightState = "back up";
+                }
+            }
+            else
+            {
+                agent.SetDestination(PositionAtDistanceFromPlayer(defaultAttackRange * 2));
+            }
+        }
+        else if (fightState == "back up")
+        {
+            animator.SetInteger("movingState", -1);
+            if (distance > defaultObserveRangeMin)
+            {
+                fightState = "observe";
+            }
+            else
+            {
+                agent.SetDestination(PositionAtDistanceFromPlayer(defaultObserveRangeMin + 1));
+            }
+        }
 
-        }
-        else // start attack
-        {
-            agent.isStopped = true;
-            animator.SetTrigger("attack1");
-            attackCooldown = defaultAttackCooldown * Random.Range(1 - defaultRandomAttackCooldown, 1 + defaultRandomAttackCooldown);
-            agent.ResetPath();
-        }
+
+        agent.speed = speed;
+        // if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1")) // attack animation is playing
+        // {
+        //     agent.isStopped = true;
+        //     if (!attackColliderActive)
+        //     {
+        //         RotateTowardsPlayer();
+        //     }
+        // }
+        // else if (distance > defaultAttackRange) // move to player
+        // {
+        //     agent.isStopped = false;
+        //     agent.SetDestination(EnemyStateController.lastSeenPlayerPosition);
+        // }
+        // else if (attackCooldown > 0) // attack is on cooldown
+        // {
+
+        // }
+        // else // start attack
+        // {
+        //     agent.isStopped = true;
+        //     animator.SetTrigger("attack1");
+        //     attackCooldown = defaultAttackCooldown * Random.Range(1 - defaultRandomAttackCooldown, 1 + defaultRandomAttackCooldown);
+        //     agent.ResetPath();
+        // }
     }
 
-    Quaternion RotateTowardsPlayer()
+    void RotateTowardsPlayer()
     {
-        Vector3 direction = EnemyStateController.lastSeenPlayerPosition - transform.position;
+        Vector3 direction = player.transform.position - transform.position;
         Quaternion rotation = Quaternion.LookRotation(direction);
-        return Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * rotationSpeed);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * rotationSpeed);
+    }
+
+    Vector3 PositionAtDistanceFromPlayer(float x)
+    {
+        Vector3 A = player.transform.position;
+        Vector3 B = transform.position;
+        targetPosition = x * Vector3.Normalize(B - A) + A;
+        return targetPosition;
     }
 
     // void AttackStart()

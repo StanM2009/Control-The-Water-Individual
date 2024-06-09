@@ -57,5 +57,11 @@ public class EnemyStateController : MonoBehaviour
         {
             interest -= Time.deltaTime * memory;
         }
+
+    }
+
+    public void LoseInterest()
+    {
+        interest = 0;
     }
 }

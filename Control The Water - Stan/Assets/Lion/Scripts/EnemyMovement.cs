@@ -25,12 +25,12 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        animator.SetInteger("movingState", AnimateMovingState());
         lastPosition = transform.position;
     }
 
     public void Idle()
     {
+        animator.SetInteger("movingState", 0);
         agent.isStopped = false;
         agent.speed = speed;
         // if (agent.remainingDistance < 1.0f)
@@ -56,6 +56,7 @@ public class EnemyMovement : MonoBehaviour
 
     public void Searching(Vector3 lastSeenPlayerPosition)
     {
+        animator.SetInteger("movingState", 1);
         agent.isStopped = false;
         agent.speed = speed;
         agent.SetDestination(lastSeenPlayerPosition);
