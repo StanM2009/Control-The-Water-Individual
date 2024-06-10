@@ -12,7 +12,7 @@ public class EnemyStateController : MonoBehaviour
 
     float interest, distance;
 
-    public Vector3 lastSeenPlayerPosition;
+    Vector3 lastSeenPlayerPosition;
     public float requiredInterest = 5f;
     public float sightDistance = 25f;
     public float memory;
