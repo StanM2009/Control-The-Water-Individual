@@ -75,6 +75,7 @@ public class EnemyAttacking : MonoBehaviour
     {
         if (fightState == "close in")
         {
+            agent.isStopped = false;
             animator.SetInteger("movingState", 1);
             if (distance < defaultObserveRangeMax)
             {
@@ -87,6 +88,7 @@ public class EnemyAttacking : MonoBehaviour
         }
         else if (fightState == "observe")
         {
+            agent.isStopped = false;
             RotateTowardsPlayer();
             animator.SetInteger("movingState", 0);
             if (distance < defaultObserveRangeMin)
@@ -101,13 +103,10 @@ public class EnemyAttacking : MonoBehaviour
         }
         else if (fightState == "attack")
         {
-            animator.SetInteger("movingState", 1);
-            if (distance > defaultAttackRange)
+            if (attackCooldown <= 0 && distance <= defaultAttackRange)
             {
-                agent.SetDestination(player.transform.position); 
-            }
-            else if (attackCooldown <= 0)
-            {
+                agent.isStopped = true;
+                animator.SetInteger("movingState", 1);
                 animator.SetTrigger("attack1");
                 attackCooldown = defaultAttackCooldown * Random.Range(1 - defaultRandomAttackCooldown, 1 + defaultRandomAttackCooldown);
                 agent.ResetPath();
@@ -116,9 +115,21 @@ public class EnemyAttacking : MonoBehaviour
                     fightState = "back up";
                 }
             }
+            if (attackCooldown > 0)
+            {
+                agent.isStopped = true;
+                animator.SetInteger("movingState", -1);
+            }
+            else if (distance > defaultAttackRange)
+            {
+                agent.isStopped = false;
+                animator.SetInteger("movingState", 1);
+                agent.SetDestination(player.transform.position); 
+            }
             else
             {
-                agent.SetDestination(PositionAtDistanceFromPlayer(defaultAttackRange * 2));
+                agent.isStopped = true;
+                animator.SetInteger("movingState", 0);
             }
         }
         else if (fightState == "back up")
