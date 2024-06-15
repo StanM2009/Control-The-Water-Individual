@@ -14,7 +14,7 @@ public class EnemyMovement : MonoBehaviour
     public Transform[] path;
 
     float interest, moveVelocityFloat, idleWalkDelay;
-    int pathPointIndex = 0;
+    // int pathPointIndex = 0;
     Vector3 lastSeenPlayerPosition, moveVelocity, lastPosition;
 
     void Start()

@@ -7,6 +7,8 @@ public class EnemyAttacking : MonoBehaviour
     public UnityEngine.AI.NavMeshAgent agent;
     public GameObject player;
 
+    Vector3 targetPosition;
+
     public float speed = 1f;
     public float runSpeed = 2.5f;
     public float rotationSpeed = 100; 
@@ -21,9 +23,7 @@ public class EnemyAttacking : MonoBehaviour
     float distance;
     float attackCooldown;
     float observeCooldown;
-    bool attackColliderActive = false;
     string fightState = "close in";
-    Vector3 targetPosition;
 
     Animator animator;
     EnemyStateController EnemyStateController;
