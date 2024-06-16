@@ -62,7 +62,6 @@ public class EnemyAttacking : MonoBehaviour
         else if (fightState == "observe")
         {
             agent.isStopped = true;
-            agent.updatePosition = false;
             agent.ResetPath();
             agent.speed = speed;
             RotateTowardsPlayer();
@@ -79,6 +78,7 @@ public class EnemyAttacking : MonoBehaviour
         }
         else if (fightState == "attack")
         {
+            RotateTowardsPlayer();
             if (attackCooldown <= 0 && distance <= defaultAttackRange)
             {
                 agent.isStopped = true;
@@ -114,12 +114,17 @@ public class EnemyAttacking : MonoBehaviour
         }
         else if (fightState == "back up")
         {
+            RotateTowardsPlayer();
             agent.speed = speed;
             animator.SetInteger("movingState", -1);
             if (distance > defaultObserveRangeMin)
             {
                 observeCooldown = defaultObserveCooldown;
                 fightState = "observe";
+            }
+            else if (distance < defaultObserveRangeMin)
+            {
+                fightState = "attack";
             }
             else
             {

@@ -33212,6 +33212,8 @@ GameObject:
   - component: {fileID: 7388527863511072950}
   - component: {fileID: 9009508050084844137}
   - component: {fileID: 8851757882832379865}
+  - component: {fileID: 6560229841858925603}
+  - component: {fileID: 3529510699259498176}
   m_Layer: 0
   m_Name: CactusB
   m_TagString: Untagged
@@ -34050,6 +34052,55 @@ MonoBehaviour:
   hydrationRestored: 30
   uses: 3
   destoryAfterUsing: 0
+--- !u!205 &6560229841858925603
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5031072908371274574}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.026203576
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 9009508050084844137}
+  - screenRelativeHeight: 0.007988025
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 9009508050084844137}
+  - screenRelativeHeight: 0.0005179624
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 9009508050084844137}
+  m_Enabled: 1
+--- !u!64 &3529510699259498176
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5031072908371274574}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7387706064836869012, guid: 61c889e6d9ad02b4eb31837884ac6509, type: 3}
 --- !u!1 &5050210189247180902
 GameObject:
   m_ObjectHideFlags: 0
