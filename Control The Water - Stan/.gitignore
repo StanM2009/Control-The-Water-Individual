@@ -2,13 +2,13 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
-/Control The Water - Stan/[Ll]ibrary/
-/Control The Water - Stan/[Tt]emp/
-/Control The Water - Stan/[Oo]bj/
-/Control The Water - Stan/[Bb]uild/
-/Control The Water - Stan/[Bb]uilds/
-/Control The Water - Stan/[Ll]ogs/
-/Control The Water - Stan/[Uu]ser[Ss]ettings/
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
