@@ -57,10 +57,15 @@ public class PlayerController : MonoBehaviour
     float health;
     float hydration;
 
+    [Header("Interacting")]
+    public float interactRange = 4f;
+    public LayerMask interactLayers;
+
     [Header("Other")]
 
     public Transform orientation;
     public GameObject gameManager;
+    public GameObject playerCam;
 
     float horizontalInput;
     float verticalInput;
@@ -103,6 +108,21 @@ public class PlayerController : MonoBehaviour
             rb.drag = groundDrag;
         else
             rb.drag = 0;
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("interact");
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, playerCam.transform.forward, out hit, interactRange, interactLayers))
+            {
+                Debug.DrawRay(transform.position, playerCam.transform.forward * interactRange, Color.yellow, 2, false);
+                hit.collider.gameObject.GetComponent<Food>().Interact(gameObject);
+            }
+            else
+            {
+                Debug.DrawRay(transform.position, playerCam.transform.forward * interactRange, Color.red, 2, false);
+            }
+        }
 
         if (!Input.GetKey(sprintKey) && hydration > staminaRechargeRequiredHydration)
         {

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7484077112629161477}
   - component: {fileID: 1995474180857127009}
-  - component: {fileID: 7885084433983974762}
   - component: {fileID: 1655640728165522990}
   m_Layer: 0
   m_Name: PlayerCam
@@ -74,14 +73,6 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 4574304962076136207}
---- !u!81 &7885084433983974762
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 219042168445916985}
-  m_Enabled: 1
 --- !u!114 &1655640728165522990
 MonoBehaviour:
   m_ObjectHideFlags: 0

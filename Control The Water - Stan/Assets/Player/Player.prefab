@@ -153,15 +153,19 @@ MonoBehaviour:
   jumpKey: 32
   sprintKey: 304
   crouchKey: 99
+  staminaSlider: {fileID: 0}
   maxStamina: 100
-  staminaRechargeSpeed: 1
+  staminaRechargeSpeed: 30
   staminaRechargeRequiredHydration: 25
+  staminaSprintCost: 15
   healthSlider: {fileID: 0}
   hydrationSlider: {fileID: 0}
   maxHealth: 100
   maxHydration: 100
   thirstSpeed: 1
+  lionDamage: 40
   orientation: {fileID: 8541603638024842870}
+  gameManager: {fileID: 0}
   state: 3
 --- !u!1 &9030265257323194835
 GameObject:
