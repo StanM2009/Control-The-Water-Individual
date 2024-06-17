@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 252359026998828553}
   - component: {fileID: 6654651894272569140}
   - component: {fileID: 5909236897689341817}
-  - component: {fileID: 2254570115631247590}
   - component: {fileID: 8331006413758793947}
+  - component: {fileID: 5680492574539353020}
   m_Layer: 0
   m_Name: TropicalTree
   m_TagString: Untagged
@@ -86,28 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2254570115631247590
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7381783391722285574}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5495902117074765545, guid: 7742f5c62b0510d4fb57554648fc71b2, type: 3}
 --- !u!205 &8331006413758793947
 LODGroup:
   m_ObjectHideFlags: 0
@@ -135,3 +113,26 @@ LODGroup:
     renderers:
     - renderer: {fileID: 5909236897689341817}
   m_Enabled: 1
+--- !u!136 &5680492574539353020
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7381783391722285574}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Height: 12
+  m_Direction: 1
+  m_Center: {x: 0, y: 5, z: 0}

@@ -23,9 +23,9 @@ public class Food : MonoBehaviour
 
     public void Interact(GameObject caller)
     {
-        if (uses > 0)
+        if (uses != 0)
         {
-            caller.GetComponent<PlayerHealth>().UpdateHealthAndHydration(healthRestored, hydrationRestored);
+            caller.GetComponent<PlayerController>().UpdateHealthAndHydration(healthRestored, hydrationRestored);
             uses -= 1;
         }
         if (uses == 0)
