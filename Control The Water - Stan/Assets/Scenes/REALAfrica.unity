@@ -1965,32 +1965,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &972282899 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3388021022527514195, guid: 5af41206a465f4b4a89e6be2d032ae74, type: 3}
-  m_PrefabInstance: {fileID: 1442697776}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &972282904
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 972282899}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.8, y: 2, z: 1.8}
-  m_Center: {x: 0, y: -0.25, z: 0}
 --- !u!1 &1067709281
 GameObject:
   m_ObjectHideFlags: 0
@@ -2681,10 +2655,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3388021022527514195, guid: 5af41206a465f4b4a89e6be2d032ae74, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 972282904}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5af41206a465f4b4a89e6be2d032ae74, type: 3}
 --- !u!1 &1472409812
 GameObject:
@@ -3425,14 +3396,6 @@ PrefabInstance:
       propertyPath: hydrationSlider
       value: 
       objectReference: {fileID: 37229735}
-    - target: {fileID: 1006267782366126962, guid: 5f6993614cde8114a9cbc9d5e75fa8ad, type: 3}
-      propertyPath: interactLayers.m_Bits
-      value: 528
-      objectReference: {fileID: 0}
-    - target: {fileID: 1318548980460004718, guid: 5f6993614cde8114a9cbc9d5e75fa8ad, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.77
-      objectReference: {fileID: 0}
     - target: {fileID: 1591798553828946999, guid: 5f6993614cde8114a9cbc9d5e75fa8ad, type: 3}
       propertyPath: m_LocalPosition.x
       value: 112.18087
