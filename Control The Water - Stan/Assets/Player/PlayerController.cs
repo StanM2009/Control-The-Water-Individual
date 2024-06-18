@@ -122,7 +122,14 @@ public class PlayerController : MonoBehaviour
                 {
                     Debug.Log("ERRORERRORERRORERROR");
                 }
-                hit.collider.gameObject.GetComponent<Food>().Interact(gameObject);
+                if (hit.collider.gameObject.CompareTag("Boat"))
+                {
+                    hit.collider.gameObject.GetComponent<BoatController>().Interact();
+                }
+                else
+                {
+                    hit.collider.gameObject.GetComponent<Food>().Interact(gameObject);
+                }
             }
             else
             {
