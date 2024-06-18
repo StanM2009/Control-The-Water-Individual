@@ -118,16 +118,16 @@ public class PlayerController : MonoBehaviour
                 Debug.DrawRay(transform.position, playerCam.transform.forward * interactRange, Color.yellow, 2, false);
                 Debug.Log(gameObject);
                 Debug.Log(hit.collider.gameObject.GetComponent<Food>());
-                if (hit.collider.gameObject.GetComponent<Food>() == null)
-                {
-                    Debug.Log("ERRORERRORERRORERROR");
-                }
                 if (hit.collider.gameObject.CompareTag("Boat"))
                 {
                     hit.collider.gameObject.GetComponent<BoatController>().Interact();
                 }
                 else
                 {
+                    if (hit.collider.gameObject.GetComponent<Food>() == null)
+                    {
+                        Debug.Log("ERRORERRORERRORERROR");
+                    }
                     hit.collider.gameObject.GetComponent<Food>().Interact(gameObject);
                 }
             }
