@@ -3429,6 +3429,10 @@ PrefabInstance:
       propertyPath: interactLayers.m_Bits
       value: 528
       objectReference: {fileID: 0}
+    - target: {fileID: 1318548980460004718, guid: 5f6993614cde8114a9cbc9d5e75fa8ad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.77
+      objectReference: {fileID: 0}
     - target: {fileID: 1591798553828946999, guid: 5f6993614cde8114a9cbc9d5e75fa8ad, type: 3}
       propertyPath: m_LocalPosition.x
       value: 112.18087
