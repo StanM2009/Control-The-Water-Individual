@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("interact");
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, playerCam.transform.forward, out hit, interactRange, interactLayers))
+            if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, interactRange, interactLayers))
             {
                 Debug.DrawRay(transform.position, playerCam.transform.forward * interactRange, Color.yellow, 2, false);
                 Debug.Log(gameObject);
